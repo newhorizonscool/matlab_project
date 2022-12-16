@@ -4,8 +4,8 @@ raz = 1e3;
 EbNo_BOB = 1:20;
 C_mean_BOB = zeros(1, 20);
 
-EbNo_EVA = 5:15;
-C_mean_EVA = zeros(1, 11);
+EbNo_EVA = 5:19; %
+C_mean_EVA = zeros(1, 20);
 
 for ii = 1:20
     for jj = 1:raz
@@ -23,7 +23,7 @@ ylabel('Capacity')
 
 
 
-for ii = 1:11
+for ii = 5:15
     for jj = 1:raz
         H = abs((randn(1) + 1i*randn(1))/sqrt(2)).^2;
         C(jj) = log2(1+H*EbNo_EVA(ii));
@@ -32,11 +32,23 @@ for ii = 1:11
 end
 
 figure
-plot(EbNo_EVA(1:end),C_mean_EVA(1:end),'-x')
-
+plot(1:20,C_mean_EVA(1:end),'-*')
+xlim([5 15])
 title('Capacity Alica-Eva')
 xlabel('SNR')
 ylabel('Capacity')
-plot(EbNo_EVA(1:end),C_mean_EVA(1:end),'-x')
 
+Capacity_secrecy = zeros(1,20); %лишняя строчка
+Capacity_secrecy = C_mean_BOB;
+for qq = 1:20
+    Capacity_secrecy(qq) = C_mean_BOB(qq) - C_mean_EVA(qq);
+    if C_mean_EVA(qq) > C_mean_BOB(qq)
+        Capacity_secrecy(qq) = 0;
+    end
+end 
+figure
+plot(1:20,Capacity_secrecy(1:end),'-*')
+title('Capacity secrecy')
+xlabel('SNR')
+ylabel('Capacity secrecy')
 
