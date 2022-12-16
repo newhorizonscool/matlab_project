@@ -46,6 +46,7 @@ for qq = 1:20
         Capacity_secrecy(qq) = 0;
     end
 end 
+
 figure
 plot(1:20,Capacity_secrecy(1:end),'-*')
 title('Capacity secrecy')
