@@ -4,7 +4,7 @@ raz = 1e3;
 EbNo_BOB = 1:20;
 C_mean_BOB = zeros(1, 20);
 
-EbNo_EVA = 5:19; %
+EbNo_EVA = 5:19; % нюанс. 
 C_mean_EVA = zeros(1, 20);
 
 for ii = 1:20
@@ -23,7 +23,7 @@ ylabel('Capacity')
 
 
 
-for ii = 5:15
+for ii = 5:15 %нюанс
     for jj = 1:raz
         H = abs((randn(1) + 1i*randn(1))/sqrt(2)).^2;
         C(jj) = log2(1+H*EbNo_EVA(ii));
