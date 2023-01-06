@@ -10,9 +10,7 @@ ImHser1 = load('C:\path\\ImHserS1.dat','r');
 H1 = ReHser+1j*ImHser;
 H2 = ReHser1+1j*ImHser1;
 EbNo_EVA = 1:0.5:20; % нюанс. 
-% EbNo_EVA_ones = zeros(1,1);
-% EbNo_EVA_new = [matrix_zero_front EbNo_EVA];
-% EbNo_EVA_new_new = [EbNo_EVA_new EbNo_EVA_ones];
+
 C_BOB = zeros(1,length(EbNo_BOB));
 C_EVA = zeros(1,length(EbNo_EVA));
 Capacity_secrecy = zeros(length(EbNo_BOB),length(EbNo_EVA));
@@ -26,8 +24,7 @@ for ii = 1:length(EbNo_BOB)
         end   
         Capacity_secrecy(kk,ii) = mean(Capacity_secrecy1);
     end
-    %C_mean_BOB(ii) = mean(C_BOB);
-    %C_mean_EVA(ii) = mean(C_EVA);
+    
 end
 [X, Y] = meshgrid(EbNo_BOB, EbNo_EVA);
 contourf(X,Y,Capacity_secrecy)
