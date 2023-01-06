@@ -20,8 +20,8 @@ Capacity_secrecy1 = zeros(1,length(EbNo_BOB));
 for ii = 1:length(EbNo_BOB)
     for kk = 1:length(EbNo_EVA)
         for jj = 1:length(ReHser)
-            C_BOB = log2(1+(abs(H1(jj)).^2)*EbNo_BOB(ii));
-            C_EVA = log2(1+(abs(H2(jj)).^2)*EbNo_EVA(kk));
+            C_BOB = log2(1+(abs(H1(jj)).^2)*EbNo_BOB(ii)); %H1 = S
+            C_EVA = log2(1+(abs(H2(jj)).^2)*EbNo_EVA(kk)); %H2 = S
             Capacity_secrecy1(jj) = max(C_BOB - C_EVA,0);
         end   
         Capacity_secrecy(kk,ii) = mean(Capacity_secrecy1);
